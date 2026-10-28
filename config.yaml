@@ -1,0 +1,53 @@
+# ============================================================
+# Projet 10 - Configuration centrale (phases 1 a 4)
+# Toute valeur modifiable (dates, seuils, chemins) se change ICI,
+# jamais en dur dans le code ni dans les notebooks.
+# ============================================================
+
+seed: 42
+
+paths:
+  raw_file: data/raw/online_retail_II.xlsx      # ou .csv (colonnes identiques)
+  interim_dir: data/interim
+  processed_dir: data/processed
+  outputs_dir: outputs
+  figures_dir: reports/figures
+  processed_format: csv                    # parquet (recommande) ou csv
+
+# ---------- Phase 3 : politique de nettoyage ----------
+cleaning:
+  # Codes de stock qui ne sont PAS des produits (frais, ajustements, tests...)
+  non_product_codes: [POST, D, M, DOT, CRUK, C2, "BANK CHARGES", ADJUST, ADJUST2,
+                      AMAZONFEE, S, B, PADS, SP1002, TEST001, TEST002]
+  non_product_prefixes: ["TEST", "GIFT_"]       # codes commencant par ...
+  adjustment_invoice_prefix: "A"                # factures "Adjust bad debt"
+  return_invoice_prefix: "C"                    # annulations / retours
+  outlier_quantile: 0.999                       # seuil de marquage (pas de suppression)
+
+# ---------- Phase 1 : definition du churn ----------
+churn:
+  horizon_days: 90                              # a confirmer avec le percentile 80 (notebook 02)
+  sensitivity_horizons: [60, 90, 120]
+
+# ---------- Phase 4 : feature engineering ----------
+features:
+  trend_window_days: 90                         # CA des 90 derniers jours vs 90 precedents
+  # Heuristique grossiste (B2B) : seuil FIXE (pas calcule sur les donnees => pas de fuite).
+  wholesale_avg_qty_per_line: 15
+  segmentation_reference: end_of_data           # T = fin des donnees + 1 jour
+
+# ---------- Calendrier des snapshots ----------
+# Regle anti-fuite (purge) : la fenetre de cible [T, T+horizon) d'un split
+# doit se terminer AVANT le premier T du split suivant.
+# Les donnees s'arretent le 2011-12-09 : T max = 2011-09-09 pour un horizon de 90 j.
+snapshots:
+  - {date: "2010-06-30", split: train}
+  - {date: "2010-07-31", split: train}
+  - {date: "2010-08-31", split: train}
+  - {date: "2010-09-30", split: train}
+  - {date: "2010-10-31", split: train}
+  - {date: "2010-11-30", split: train}
+  - {date: "2010-12-31", split: train}
+  - {date: "2011-03-31", split: validation}
+  - {date: "2011-06-30", split: test}
+  - {date: "2011-09-09", split: test}
