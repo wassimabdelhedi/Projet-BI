@@ -107,23 +107,15 @@ plt.tight_layout()
 plt.savefig(FIG / "segments_pca.png", dpi=150)
 plt.close()
 
-print("\nUMAP 2D...")
-try:
-    import umap as umap_lib
-    reducer = umap_lib.UMAP(n_components=2, random_state=SEED, n_neighbors=30, min_dist=0.1)
-    coords_low = reducer.fit_transform(X)
-    fig_name = "segments_umap.png"
-    title = "Segments K-Means — espace UMAP 2D"
-    print("  UMAP utilise")
-except Exception:
-    from sklearn.manifold import TSNE
-    rng = np.random.default_rng(SEED)
-    idx = rng.choice(len(X), size=min(3000, len(X)), replace=False)
-    coords_low = np.zeros((len(X), 2))
-    coords_low[idx] = TSNE(n_components=2, random_state=SEED).fit_transform(X[idx])
-    fig_name = "segments_tsne.png"
-    title = "Segments K-Means — t-SNE 2D"
-    print("  t-SNE utilise (UMAP indisponible)")
+print("\nt-SNE 2D...")
+from sklearn.manifold import TSNE
+rng = np.random.default_rng(SEED)
+idx = rng.choice(len(X), size=min(3000, len(X)), replace=False)
+coords_low = np.zeros((len(X), 2))
+coords_low[idx] = TSNE(n_components=2, random_state=SEED).fit_transform(X[idx])
+fig_name = "segments_tsne.png"
+title = "Segments K-Means — t-SNE 2D"
+print("  t-SNE utilise")
 
 fig, ax = plt.subplots(figsize=(10, 7))
 for sid, sname in sorted(SEGMENT_NAMES.items()):

@@ -1,0 +1,286 @@
+{
+  "test_evaluation": [
+    {
+      "Modèle": "XGBoost",
+      "ROC-AUC (Val)": 0.8577,
+      "ROC-AUC (Test)": 0.9212,
+      "PR-AUC (Test)": 0.9483,
+      "F1-Score (Test)": 0.8196,
+      "Précision (Test)": 0.9334,
+      "Rappel (Test)": 0.7306,
+      "Brier Score (Test)": 0.1335
+    },
+    {
+      "Modèle": "Random Forest",
+      "ROC-AUC (Val)": 0.8463,
+      "ROC-AUC (Test)": 0.8874,
+      "PR-AUC (Test)": 0.9314,
+      "F1-Score (Test)": 0.8321,
+      "Précision (Test)": 0.8335,
+      "Rappel (Test)": 0.8306,
+      "Brier Score (Test)": 0.1462
+    },
+    {
+      "Modèle": "Régression Logistique",
+      "ROC-AUC (Val)": 0.7952,
+      "ROC-AUC (Test)": 0.7669,
+      "PR-AUC (Test)": 0.8469,
+      "F1-Score (Test)": 0.6629,
+      "Précision (Test)": 0.8083,
+      "Rappel (Test)": 0.5619,
+      "Brier Score (Test)": 0.2314
+    },
+    {
+      "Modèle": "Règle Récence",
+      "ROC-AUC (Val)": 0.6764,
+      "ROC-AUC (Test)": 0.6856,
+      "PR-AUC (Test)": 0.7255,
+      "F1-Score (Test)": 0.7808,
+      "Précision (Test)": 0.6827,
+      "Rappel (Test)": 0.9119,
+      "Brier Score (Test)": 0.2711
+    },
+    {
+      "Modèle": "Dummy (majoritaire)",
+      "ROC-AUC (Val)": 0.5,
+      "ROC-AUC (Test)": 0.5,
+      "PR-AUC (Test)": 0.6125,
+      "F1-Score (Test)": 0.7597,
+      "Précision (Test)": 0.6125,
+      "Rappel (Test)": 1.0,
+      "Brier Score (Test)": 0.3875
+    }
+  ],
+  "snapshot_evaluation": [
+    {
+      "snapshot": "2011-06-30",
+      "n_clients": 5013,
+      "taux_churn": 0.661,
+      "roc_auc": 0.8862,
+      "pr_auc": 0.9379,
+      "f1": 0.8127,
+      "brier_score": 0.1469
+    },
+    {
+      "snapshot": "2011-09-09",
+      "n_clients": 5253,
+      "taux_churn": 0.566,
+      "roc_auc": 0.9506,
+      "pr_auc": 0.9603,
+      "f1": 0.8278,
+      "brier_score": 0.1207
+    }
+  ],
+  "group_kfold_cv": {
+    "mean_metrics": {
+      "roc_auc": 0.8494,
+      "pr_auc": 0.8829,
+      "f1": 0.7546,
+      "brier_score": 0.1583,
+      "roc_auc_std": 0.0056,
+      "pr_auc_std": 0.0078,
+      "f1_std": 0.0063
+    },
+    "n_splits": 5,
+    "n_clients": 4315
+  },
+  "bootstrap_confidence_intervals_95pct": {
+    "roc_auc": {
+      "lower": 0.9148,
+      "mean": 0.9208,
+      "upper": 0.9255
+    },
+    "pr_auc": {
+      "lower": 0.9427,
+      "mean": 0.9481,
+      "upper": 0.9524
+    },
+    "n_bootstrap": 200
+  },
+  "uk_nonuk_evaluation": [
+    {
+      "group": "UK",
+      "n_clients": 9390,
+      "churn_rate": 0.617,
+      "roc_auc": 0.9205,
+      "pr_auc": 0.9481,
+      "f1": 0.8185,
+      "brier_score": 0.1341
+    },
+    {
+      "group": "Hors-UK",
+      "n_clients": 876,
+      "churn_rate": 0.57,
+      "roc_auc": 0.9263,
+      "pr_auc": 0.9505,
+      "f1": 0.8324,
+      "brier_score": 0.1267
+    },
+    {
+      "group": "Total",
+      "n_clients": 10266,
+      "churn_rate": 0.613,
+      "roc_auc": 0.9212,
+      "pr_auc": 0.9483,
+      "f1": 0.8196,
+      "brier_score": 0.1335
+    }
+  ],
+  "cost_threshold_analysis": {
+    "threshold_optimal": 0.139,
+    "total_cost_optimal_eur": 17235.0,
+    "cost_no_action_eur": 314400.0,
+    "savings_eur": 297165.0,
+    "cost_fp_eur": 5.0,
+    "cost_fn_eur": 50.0,
+    "n_fp": 2597,
+    "n_fn": 85,
+    "n_tp": 6203
+  },
+  "sensitivity_horizons": [
+    {
+      "horizon_jours": 90,
+      "n_total": 40286,
+      "churn_rate_train": 0.547,
+      "churn_rate_test": 0.613,
+      "roc_auc": 0.7914,
+      "pr_auc": 0.8332,
+      "f1": 0.7256,
+      "brier_score": 0.1943,
+      "note": "exact"
+    }
+  ],
+  "top1pct_robustness": {
+    "n_total": 10266,
+    "n_excluded_top1pct": 103,
+    "threshold_monetary": 23622.94,
+    "metrics_with_top1": {
+      "roc_auc": 0.9212,
+      "pr_auc": 0.9483,
+      "f1": 0.8196,
+      "precision": 0.9334,
+      "recall": 0.7306,
+      "brier_score": 0.1335,
+      "accuracy": 0.803
+    },
+    "metrics_without_top1": {
+      "roc_auc": 0.9195,
+      "pr_auc": 0.9483,
+      "f1": 0.8197,
+      "precision": 0.9333,
+      "recall": 0.7308,
+      "brier_score": 0.1345,
+      "accuracy": 0.8014
+    },
+    "roc_auc_delta": -0.0017
+  },
+  "decile_lift": [
+    {
+      "decile": 1,
+      "clients": 1027,
+      "churners": 1021,
+      "taux_churn": 0.9942,
+      "lift": 1.62,
+      "cum_gain_pct": 16.24,
+      "cum_lift": 1.62
+    },
+    {
+      "decile": 2,
+      "clients": 1027,
+      "churners": 1023,
+      "taux_churn": 0.9961,
+      "lift": 1.63,
+      "cum_gain_pct": 32.51,
+      "cum_lift": 1.62
+    },
+    {
+      "decile": 3,
+      "clients": 1026,
+      "churners": 978,
+      "taux_churn": 0.9532,
+      "lift": 1.56,
+      "cum_gain_pct": 48.06,
+      "cum_lift": 1.6
+    },
+    {
+      "decile": 4,
+      "clients": 1027,
+      "churners": 907,
+      "taux_churn": 0.8832,
+      "lift": 1.44,
+      "cum_gain_pct": 62.48,
+      "cum_lift": 1.56
+    },
+    {
+      "decile": 5,
+      "clients": 1026,
+      "churners": 830,
+      "taux_churn": 0.809,
+      "lift": 1.32,
+      "cum_gain_pct": 75.68,
+      "cum_lift": 1.51
+    },
+    {
+      "decile": 6,
+      "clients": 1027,
+      "churners": 713,
+      "taux_churn": 0.6943,
+      "lift": 1.13,
+      "cum_gain_pct": 87.02,
+      "cum_lift": 1.45
+    },
+    {
+      "decile": 7,
+      "clients": 1026,
+      "churners": 408,
+      "taux_churn": 0.3977,
+      "lift": 0.65,
+      "cum_gain_pct": 93.51,
+      "cum_lift": 1.34
+    },
+    {
+      "decile": 8,
+      "clients": 1027,
+      "churners": 227,
+      "taux_churn": 0.221,
+      "lift": 0.36,
+      "cum_gain_pct": 97.12,
+      "cum_lift": 1.21
+    },
+    {
+      "decile": 9,
+      "clients": 1026,
+      "churners": 126,
+      "taux_churn": 0.1228,
+      "lift": 0.2,
+      "cum_gain_pct": 99.13,
+      "cum_lift": 1.1
+    },
+    {
+      "decile": 10,
+      "clients": 1027,
+      "churners": 55,
+      "taux_churn": 0.0536,
+      "lift": 0.09,
+      "cum_gain_pct": 100.0,
+      "cum_lift": 1.0
+    }
+  ],
+  "shap_top10_features": {
+    "segment_id": 0.39010000228881836,
+    "frequency": 0.08669999986886978,
+    "snapshot_month": 0.057100001722574234,
+    "is_single_purchase": 0.03869999945163727,
+    "ipt_mean": 0.02930000051856041,
+    "recency_over_ipt": 0.021900000050663948,
+    "gross_revenue": 0.0203000009059906,
+    "monetary": 0.019600000232458115,
+    "recency": 0.017500000074505806,
+    "revenue_prev": 0.016599999740719795
+  },
+  "risk_class_distribution": {
+    "Élevé": 14952,
+    "Moyen": 14804,
+    "Faible": 10530
+  }
+}
