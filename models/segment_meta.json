@@ -1,0 +1,46 @@
+{
+  "k": 5,
+  "feature_names": [
+    "frequency",
+    "gross_revenue",
+    "avg_basket",
+    "recency",
+    "tenure_days",
+    "return_amount",
+    "monetary",
+    "return_rate",
+    "avg_qty_per_line",
+    "avg_items_per_invoice",
+    "n_unique_products",
+    "n_unique_categories",
+    "ipt_mean",
+    "is_single_purchase",
+    "recency_over_ipt",
+    "revenue_recent",
+    "revenue_prev",
+    "trend",
+    "is_wholesale",
+    "cat_share_bags",
+    "cat_share_candles_lighting",
+    "cat_share_christmas",
+    "cat_share_garden_outdoor",
+    "cat_share_home_decor",
+    "cat_share_jewellery_accessories",
+    "cat_share_kitchen_dining",
+    "cat_share_other",
+    "cat_share_stationery_paper",
+    "cat_share_storage",
+    "cat_share_toys_games"
+  ],
+  "segment_names": {
+    "2": "Champions",
+    "3": "Fideles",
+    "1": "Fideles",
+    "4": "Perdus (CA eleve)",
+    "0": "Perdus (CA faible)"
+  },
+  "metrics": {
+    "silhouette": 0.1176,
+    "davies_bouldin": 2.2756
+  }
+}

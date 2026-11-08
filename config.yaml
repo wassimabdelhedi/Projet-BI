@@ -6,6 +6,23 @@
 
 seed: 42
 
+# ---------- Phase 5 : segmentation ----------
+segmentation:
+  k: 5                                          # nombre de segments K-Means (peut etre change)
+  k_range: [2, 3, 4, 5, 6, 7, 8]               # plage testee pour le choix de K
+  winsor_quantile: 0.99                         # winsorisation des variables numeriques
+  n_bootstrap: 50                               # tirages bootstrap pour la stabilite
+  bootstrap_sample_frac: 0.80                   # fraction de clients par tirage
+  random_state: 42
+  models_dir: models                            # dossier de sauvegarde des modeles
+  # Variables EXCLUES du clustering (pays interdit, snapshot_date, CustomerID)
+  exclude_from_clustering: [country_group, is_uk, snapshot_month, snapshot_date, CustomerID]
+  # Variables numeriques continues (log-transformees puis winsorizees puis standardisees)
+  log_vars: [recency, frequency, monetary, gross_revenue, avg_basket, tenure_days,
+             return_amount, avg_qty_per_line, avg_items_per_invoice,
+             n_unique_products, n_unique_categories, ipt_mean, recency_over_ipt,
+             revenue_recent, revenue_prev]
+
 paths:
   raw_file: data/raw/online_retail_II.xlsx      # ou .csv (colonnes identiques)
   interim_dir: data/interim

@@ -1,0 +1,20 @@
+indicateur,valeur
+Lignes (brut),1067371
+Factures distinctes,53628
+Clients distincts (ID non nul),5942
+Produits distincts (StockCode),5131
+Pays distincts,43
+Date min,2009-12-01 07:45:00
+Date max,2011-12-09 12:50:00
+Doublons exacts,34335
+Lignes sans CustomerID,243007
+% lignes sans CustomerID,22.77
+% CA (brut) sans CustomerID,13.68
+Lignes sans Description,4382
+Lignes de factures 'C' (retours/annulations),19494
+Lignes de factures 'A' (ajustements),6
+Quantity < 0,22950
+Quantity = 0,0
+Price <= 0,6207
+Lignes codes non-produits,5933
+StockCode avec plusieurs Description,1210

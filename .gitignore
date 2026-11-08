@@ -1,10 +1,16 @@
-data/raw/*
-data/interim/*
-data/processed/*
-!data/**/.gitkeep
-outputs/*
-!outputs/.gitkeep
-__pycache__/
-.ipynb_checkpoints/
+# Environments
 .venv/
+__pycache__/
 *.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data files (trop volumineux pour GitHub > 100MB ou donnees brutes/intermediaires)
+data/raw/*
+!data/raw/sample_retail.xlsx
+data/interim/*
+data/processed/*.csv
+data/processed/*.parquet
+
+# Modeles binaires
+models/*.joblib

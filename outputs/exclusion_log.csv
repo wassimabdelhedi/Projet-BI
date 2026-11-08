@@ -1,0 +1,10 @@
+etape,regle,lignes_exclues,% du brut,CA_exclu (Quantity x Price)
+1,Doublons exacts (dont chevauchement entre les 2 feuilles),34335,3.217,431716.87
+2,Factures 'A' : ajustement comptable de dettes,6,0.001,-147614.08
+3,"Codes non-produits (frais de port, commissions, tests, ajustements...)",5815,0.545,75726.88
+4,"Price <= 0 (dons, erreurs, ajustements)",5963,0.559,0.0
+5,Quantity = 0,0,0.0,0.0
+6,"Quantity < 0 sans prefixe 'C' (ajustement de stock, casse, perte)",0,0.0,0.0
+7,Facture 'C' avec Quantity > 0 (incoherent),0,0.0,0.0
+TOTAL,Lignes exclues au total,46119,4.321,359829.67
+RESTE,Lignes conservees (transactions_clean),1021252,95.679,18927420.9
